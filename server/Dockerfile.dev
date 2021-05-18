@@ -1,0 +1,21 @@
+FROM node:14.14.0-alpine
+
+USER node
+
+RUN mkdir -p /home/node/app
+
+WORKDIR '/home/node/app'
+
+COPY --chown=node:node ./package.json ./
+
+RUN npm install
+
+#COPY ./package.json ./
+
+COPY --chown=node:node ./ ./
+
+#COPY ./ ./
+
+CMD ["npm", "run", "dev"]
+# we are using 'dev' here because we have mentioned a script as "dev": "nodemon" in package.json of current directory
+# which helps in reloading our application automatically as soon as anything in the source code changes.
