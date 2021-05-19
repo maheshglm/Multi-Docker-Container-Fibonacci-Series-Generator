@@ -9,7 +9,7 @@ services:
     redis:
         image: 'redis:latest'
 
-    server:
+    api: #name of the service was server before but nginx has a keyword server and in order to avoid any error later on we are changing it to 'api'
         build:
             dockerfile: Dockerfile.dev
             context: ./server
