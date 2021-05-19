@@ -10,13 +10,20 @@ services:
         image: 'redis:latest'
 
     nginx:
+        depends_on:
+            - api
+            - client
+            - postgres
+            - redis
+            - worker
+
         restart: always
         # restart policy as 'always' makes sure that our nginx server will always be up and running as it is redirecting traffic to our whole application
         build:
             dockerfile: Dockerfile.dev
             context: ./nginx
         ports: 
-            - '3050:80'
+            - "3050:80"
             # We are applying port mapping here because our nginx server will be the entry-point to our application
             # we are mapping nginx listening port to port number '3050' of our host machine
 
@@ -34,15 +41,19 @@ services:
             # we are specifing the name of redis service here because our docker-compose is smart enough to identify which service to connect to
             # otherwise we had to menntion the URL of redis server
             - REDIS_PORT=6379 #default redis port
-            - POSTGRES_USER=postgres
-            - POSTGRES_HOST=postgres #same reason as above
-            - POSTGRES_DB=postgres
+            - PGUSER=postgres
+            - PGHOST=postgres #same reason as above
+            - PGDATABASE=postgres
+            - PGPASSWORD=postgres_password
             - PGPORT=5432 #default postgres password
 
 
             #- POSTGRES_PASSWORD=postgres_password #default password
 
     client:
+       # tty: true
+        stdin_open: true
+
         build:
             dockerfile: Dockerfile.dev
             context: ./client
@@ -51,8 +62,11 @@ services:
             - /home/node/app/node_modules
             - ./client:/home/node/app
 
-
     worker:
+        environment:
+            - REDIS_HOST=redis
+            - REDIS_PORT=6379
+
         build:
             dockerfile: Dockerfile.dev
             context: ./worker
