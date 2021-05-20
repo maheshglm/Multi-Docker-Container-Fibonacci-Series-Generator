@@ -4,7 +4,7 @@ services:
 
 # Building a container to test the client using Development Dockerfile.dev in Client directory
 before_install:
-  - docker build -t samay/client-test ./client/Dockerfile.dev ./client
+  - docker build -t samay/client-test -f ./client/Dockerfile.dev ./client
 
 # Overriding default command of Dockerfile.dev inside client directory
 script:
