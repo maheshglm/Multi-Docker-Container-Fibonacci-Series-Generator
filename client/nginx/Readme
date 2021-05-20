@@ -1,0 +1,2 @@
+This is the Nginx server with sole purpose of serving us the react app build on port 3000 
+Later on we are going to map the port 3000 of this nginx to our main routing Nginx server.
