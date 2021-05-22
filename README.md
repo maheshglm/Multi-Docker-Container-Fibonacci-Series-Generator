@@ -30,7 +30,7 @@ This is a demo app built with an intention to successfully deploy a multi-contai
        - NGINX
        - Postgres (from Docker Hub)
        - Redis (from Docker Hub)
-* For Deployment Environment
+* For Production/Deployment Environment
   + Docker
   +  Travic-CI
   +  AWS
