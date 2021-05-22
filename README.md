@@ -3,20 +3,24 @@
 ## User Interface has been bootstrapped with **[Create React App](https://github.com/facebook/create-react-app/ "Visit Facebook Open Source Git Repo")**.
 
 This is a demo app built with an intention to successfully deploy a multi-container docker app on **AWS BEANSTALK** and can be served to end user. 
->Note: You can also deploy this app on your local server by just using *Docker-compose.yml* present in the root directory of this project, it will get deployed on **NGINX server**
+>Note: You can also deploy this app on your localhost by just using *Docker-compose.yml* present in the root directory of this project, it will get deployed on **NGINX server**
 
 
 ### How to use the project:
 * Clone the repository
 * Navigate to the root directory of the project in your terminal
-* For deploying it on you localhost:
+* For deployment on you localhost:
     + run command **"docker-compose up --build"**
     + Access the application on **[localhost:3050](http://localhost:3050/ "Visit localhost:3050")**
-* For deploying it on AWS:
+* For deployment on AWS:
     + Setup Travis-CI
     + Setup AWS and it's services
     + Go to Elastic Beanstalk application and click on the URL provided for accessing the application over there
 
+>Steps to setup Travis-CI and AWS can be found [here](https://github.com/Samay1993/Multi-Docker-Container-Fibonacci-Series-Generator/blob/master/AWS_config.md/ "Steps to configure Travis-CI and AWS")<br>
+>Want to know more about docker??? [CLICK HERE](https://github.com/Samay1993/Production-Grade-Workflow/blob/master/DockerIntro.md "Introduction to Docker and Docker-Compose").
+
+*Note: This is link to the file present in another project, Open in new tab for convenience.*
 
 ### **Tech-Stack Used:**
 * For Development Environment
