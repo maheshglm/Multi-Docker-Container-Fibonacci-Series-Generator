@@ -22,6 +22,10 @@ This is a demo app built with an intention to successfully deploy a multi-contai
 * For Development Environment
   + Docker
   + Docker-Compose
+  + Services
+       - NGINX
+       - Postgres (from Docker Hub)
+       - Redis (from Docker Hub)
 * For Deployment Environment
   + Docker
   +  Travic-CI
