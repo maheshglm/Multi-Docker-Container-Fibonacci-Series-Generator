@@ -5,6 +5,7 @@ services:
         environment:
             - POSTGRES_PASSWORD=postgres_password
             # As per the updated documentation of Postgres in DockerHub we have to put password here.
+    
     redis:
         image: 'redis:latest'
 
@@ -19,7 +20,7 @@ services:
         restart: always
         # restart policy as 'always' makes sure that our nginx server will always be up and running as it is redirecting traffic to our whole application
         build:
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.dev
             context: ./nginx
         ports: 
             - "3050:80"
@@ -28,7 +29,7 @@ services:
 
     api: #name of the service was server before but nginx has a keyword server and in order to avoid any error later on we are changing it to 'api'
         build:
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.dev
             context: ./server
 
         volumes:
@@ -45,6 +46,8 @@ services:
             - PGDATABASE=postgres
             - PGPASSWORD=postgres_password
             - PGPORT=5432 #default postgres password
+
+
             #- POSTGRES_PASSWORD=postgres_password #default password
 
     client:
@@ -52,7 +55,7 @@ services:
         stdin_open: true
 
         build:
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.dev
             context: ./client
 
         volumes:
@@ -65,7 +68,7 @@ services:
             - REDIS_PORT=6379
 
         build:
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.dev
             context: ./worker
 
         volumes:
